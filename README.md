@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🔗 URL Shortener
 
-## Getting Started
+A modern URL shortener built with **Next.js**, **TypeScript**, **Tailwind CSS**, **shadcnUI**, **BetterAuth**, **PostgreSQL**, and **Redis**. Features include user accounts, click tracking, rate limiting, URL history, and Redis for performance.
 
-First, run the development server:
+---
+
+## ✅ Interactive Project Checklist
+
+<details>
+<summary>📦 Initial Setup</summary>
+
+- [x] **Create Next.js Project**
+- [ ] **Install Dependencies** (Tailwind CSS, shadcnUI, Prisma, BetterAuth, etc.)
+- [x] **Set Up Git Repository**
+
+</details>
+
+<details>
+<summary>🎨 Tailwind CSS Setup</summary>
+
+- [x] **Initialize Tailwind CSS**
+- [x] **Test Tailwind Styling**
+
+</details>
+
+<details>
+<summary>🧩 shadcnUI Setup</summary>
+
+- [x] **Initialize shadcnUI**
+- [x] **Install UI Components** (button, input, table)
+- [x] **Test shadcnUI Components**
+
+</details>
+
+<details>
+<summary>🗃️ PostgreSQL + Prisma Setup</summary>
+
+- [ ] **Set Up PostgreSQL** (Local/Supabase/Neon)
+- [ ] **Initialize Prisma**
+- [ ] **Define Prisma Schema** (`User`, `Url`)
+- [ ] **Run Prisma Migrations**
+- [ ] **Generate Prisma Client**
+
+</details>
+
+<details>
+<summary>🔐 BetterAuth Setup</summary>
+
+- [ ] **Initialize BetterAuth with Prisma Adapter**
+- [ ] **Create Auth API Routes** (`signup`, `login`)
+- [ ] **Test Authentication via Postman**
+
+</details>
+
+<details>
+<summary>🚀 Core Features</summary>
+
+- [ ] **Short URL Creation API**
+- [ ] **Redirection with Click Tracking**
+- [ ] **Rate Limiting with Middleware**
+- [ ] **User URL History API**
+
+</details>
+
+<details>
+<summary>💻 Frontend Features</summary>
+
+- [ ] **Signup/Login Pages (shadcnUI)**
+- [ ] **URL Shortener Form (Homepage)**
+- [ ] **History Dashboard with Table**
+- [ ] **Full Frontend Testing**
+
+</details>
+
+<details>
+<summary>⚡ Redis Integration (Add it later)</summary>
+
+- [ ] **Install Redis Client**
+- [ ] **Set Up Redis (Docker/Upstash)**
+- [ ] **Prisma Schema Update (Remove RateLimit model)**
+- [ ] **Use Redis for Rate Limiting**
+- [ ] **Cache Short URLs in Redis**
+- [ ] **[Optional] Redis Click Tracking**
+- [ ] **Test Redis Integration**
+
+</details>
+
+<details>
+<summary>🌐 Deployment</summary>
+
+- [ ] **Prepare `.env.production`**
+- [ ] **Deploy to Vercel**
+- [ ] **Production Testing**
+
+</details>
+
+<details>
+<summary>✨ Optional Enhancements</summary>
+
+- [ ] **URL Validation**
+- [ ] **Custom Short Codes**
+- [ ] **URL Expiration**
+- [ ] **Click Analytics Chart**
+
+</details>
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+git clone <your-repo-url>
+cd <project-folder>
+npm install
+npx prisma db push
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contributing
+Submit issues or pull requests to improve the project!
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+MIT License
