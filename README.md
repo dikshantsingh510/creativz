@@ -10,7 +10,7 @@ A modern URL shortener built with **Next.js**, **TypeScript**, **Tailwind CSS**,
 <summary>📦 Initial Setup</summary>
 
 - [x] **Create Next.js Project**
-- [ ] **Install Dependencies** (Tailwind CSS, shadcnUI, Prisma, BetterAuth, etc.)
+- [x] **Install Dependencies** (Tailwind CSS, shadcnUI, Prisma, BetterAuth, etc.)
 - [x] **Set Up Git Repository**
 
 </details>
@@ -35,20 +35,20 @@ A modern URL shortener built with **Next.js**, **TypeScript**, **Tailwind CSS**,
 <details>
 <summary>🗃️ PostgreSQL + Prisma Setup</summary>
 
-- [ ] **Set Up PostgreSQL** (Local/Supabase/Neon)
-- [ ] **Initialize Prisma**
-- [ ] **Define Prisma Schema** (`User`, `Url`)
-- [ ] **Run Prisma Migrations**
-- [ ] **Generate Prisma Client**
+- [x] **Set Up PostgreSQL** (Local/Supabase/Neon)
+- [x] **Initialize Prisma**
+- [x] **Define Prisma Schema** (`User`, `Url`)
+- [x] **Run Prisma Migrations**
+- [x] **Generate Prisma Client**
 
 </details>
 
 <details>
 <summary>🔐 BetterAuth Setup</summary>
 
-- [ ] **Initialize BetterAuth with Prisma Adapter**
+- [x] **Initialize BetterAuth with Prisma Adapter**
 - [ ] **Create Auth API Routes** (`signup`, `login`)
-- [ ] **Test Authentication via Postman**
+- [ ] **Test Authentication**
 
 </details>
 
