@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "shortCode": "ksjgsf",
+    "longUrl": "http://localhost:3000/dashboard/home",
+    "clicks": 25,
+    "createdAt": "2024-06-08T10:15:00.000Z"
+  },
+  {
+    "id": 2,
+    "shortCode": "x8rT4q",
+    "longUrl": "http://localhost:3000/dashboard/stats",
+    "clicks": 12,
+    "createdAt": "2024-06-05T08:30:00.000Z"
+  },
+  {
+    "id": 3,
+    "shortCode": "lK4pQ9",
+    "longUrl": "http://localhost:3000/dashboard/links",
+    "clicks": 98,
+    "createdAt": "2024-06-11T17:45:00.000Z"
+  },
+  {
+    "id": 4,
+    "shortCode": "zYt6Hv",
+    "longUrl": "http://localhost:3000/dashboard/settings",
+    "clicks": 44,
+    "createdAt": "2024-06-01T13:20:00.000Z"
+  },
+  {
+    "id": 5,
+    "shortCode": "mB9sRw",
+    "longUrl": "http://localhost:3000/dashboard/profile",
+    "clicks": 33,
+    "createdAt": "2024-06-12T09:10:00.000Z"
+  },
+  {
+    "id": 6,
+    "shortCode": "tQr1Ln",
+    "longUrl": "http://localhost:3000/dashboard/qr",
+    "clicks": 17,
+    "createdAt": "2024-06-06T11:50:00.000Z"
+  },
+  {
+    "id": 7,
+    "shortCode": "nX2cVp",
+    "longUrl": "http://localhost:3000/dashboard/tracking",
+    "clicks": 5,
+    "createdAt": "2024-06-03T16:00:00.000Z"
+  },
+  {
+    "id": 8,
+    "shortCode": "jA6vKd",
+    "longUrl": "http://localhost:3000/dashboard/reports",
+    "clicks": 61,
+    "createdAt": "2024-06-09T14:40:00.000Z"
+  },
+  {
+    "id": 9,
+    "shortCode": "hU4eGj",
+    "longUrl": "http://localhost:3000/dashboard/custom",
+    "clicks": 3,
+    "createdAt": "2024-06-10T18:05:00.000Z"
+  },
+  {
+    "id": 10,
+    "shortCode": "qW3sDl",
+    "longUrl": "http://localhost:3000/dashboard/support",
+    "clicks": 28,
+    "createdAt": "2024-06-04T12:25:00.000Z"
+  }
+]
