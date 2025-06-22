@@ -1,16 +1,15 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   IconChartBar,
   IconDashboard,
-  IconInnerShadowTop,
   IconLink,
   IconLogout,
   IconUser,
-} from "@tabler/icons-react"
+} from "@tabler/icons-react";
 
-import { NavMain } from "@/components/dashboard/layoutComponents/nav-main"
+import { NavMain } from "@/components/dashboard/layoutComponents/nav-main";
 
 import {
   Sidebar,
@@ -20,10 +19,11 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
-import Link from "next/link"
-import LogoutButton from "@/components/utils/logoutButton"
-
+} from "@/components/ui/sidebar";
+import Link from "next/link";
+import LogoutButton from "@/components/utils/logoutButton";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 
 const data = {
   user: {
@@ -58,12 +58,21 @@ const data = {
       title: "Logout",
       url: "#",
       icon: IconLogout,
-    }
+    },
   ],
-  
 };
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { resolvedTheme } = useTheme();
+
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null; // Avoid SSR mismatch
+
+  const logoSrc =
+    resolvedTheme === "dark" ? "/logo_dark.png" : "/logo_white.png";
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
@@ -71,11 +80,19 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              className="data-[slot=sidebar-menu-button]:!p-1.5"
+              className="data-[slot=sidebar-menu-button]:!p-1.5  hover:bg-transparent"
             >
-              <Link href="/">
-                <IconInnerShadowTop className="!size-5" />
-                <span className="text-base font-semibold">URL Shortner</span>
+              <Link href="/" className=" relative h-[48px]">
+                {/* <IconInnerShadowTop className="!size-5" />
+                                  <span className="text-base font-semibold">URL Shortner</span> */}
+
+                <Image
+                  src={logoSrc}
+                  alt="logo"
+                  width={150}
+                  height={40}
+                  className=" absolute -left-2"
+                />
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -85,8 +102,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <LogoutButton/>
+        <LogoutButton />
       </SidebarFooter>
     </Sidebar>
-  )
+  );
 }
