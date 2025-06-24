@@ -1,19 +1,24 @@
-
 import { Button } from "@/components/ui/button";
 import { SidebarSeparator } from "@/components/ui/sidebar";
-import React from "react";
+import React, { use } from "react";
 
-import linksdata from "../linksdata.json";
-import { LinkTable } from "@/components/dashboard/links/link-table";
+import LinkTable from "@/components/dashboard/links/link-table";
 import Link from "next/link";
 import { Metadata } from "next";
+import { linksAction } from "@/actions/links.action";
 
 export const metadata: Metadata = {
   title: "Crativez | URL Management",
   description: "Manage URLs in the Crativez application",
 };
 
-const page = () => {
+// Force dynamic rendering
+export const dynamic = "force-dynamic";
+
+const Page = () => {
+  const { linksData } = use(linksAction());
+  // console.log(data);
+
   return (
     <div className="flex flex-1 flex-col">
       <div className="@container/main flex flex-1 flex-col gap-6 px-4 lg:px-6 py-6 md:gap-6">
@@ -26,20 +31,18 @@ const page = () => {
               Create and manage all your links from here.
             </p>
             <Button className="cursor-pointer">
-              <Link href="/dashboard/home">
-              Create Short Link
-              </Link>
+              <Link href="/dashboard/home">Create Short Link</Link>
             </Button>
           </div>
         </div>
         <SidebarSeparator />
 
         <div className="overflow-hidden rounded-lg border">
-          <LinkTable data={linksdata} />
+          {linksData && <LinkTable data={linksData} />}
         </div>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;

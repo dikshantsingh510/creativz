@@ -42,17 +42,32 @@ export const description = "An interactive area chart";
 
 const userUrls = linksdata;
 
+interface LinksData {
+  id: number;
+  shortCode: string;
+  longUrl: string;
+  clicks: number;
+  createdAt: Date;
+  userId?: string | null;
+}
+
+// interface LinkTableProps {
+//   data: LinksData[];
+// }
+
 export function ChartAreaInteractive({
   totalClicks,
   avgClicks,
+  data
 }: {
   totalClicks: number;
-  avgClicks:number
+  avgClicks:number;
+  data: LinksData[];
 }) {
 
 
   //? Get the top performaing url
-  const topUrls = [...userUrls].sort((a, b) => b.clicks - a.clicks).slice(0, 5);
+  const topUrls = [...data].sort((a, b) => b.clicks - a.clicks).slice(0, 5);
 
   // console.log(avgClicks, topUrls);
 

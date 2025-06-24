@@ -12,9 +12,17 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { deleteLinkAction } from "@/actions/links.action";
+import { toast } from "sonner";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const DeleteShortUrlButton = ({ id, url }: { id: number; url: string }) => {
+  const handleDelete = async () => {
+    const response = await deleteLinkAction(id);
+    if (response?.success) {
+      toast.success("Url deleted successfully");
+    }
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -36,7 +44,9 @@ const DeleteShortUrlButton = ({ id, url }: { id: number; url: string }) => {
             <Button variant="outline">Cancel</Button>
           </DialogClose>
           <DialogClose asChild>
-            <Button variant="destructive">Confirm Delete</Button>
+            <Button variant="destructive" onClick={handleDelete}>
+              Confirm Delete
+            </Button>
           </DialogClose>
         </DialogFooter>
       </DialogContent>
