@@ -1,14 +1,56 @@
 import { Button } from "@/components/ui/button";
+import { prisma } from "@/lib/prisma";
 import { Metadata } from "next";
-
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Redirecting...",
   description: "You are being redirected to the original URL",
 };
 
-const page = () => {
+const RedirectPage = async ({
+  params,
+}: {
+  params: Promise<{ shortCode: string }>;
+}) => {
+  const shortCode = (await params).shortCode;
+
+  let url;
+
+  try {
+    // Fetch from PostgreSQL
+    url = await prisma.url.findUnique({
+      where: { shortCode },
+      select: { longUrl: true },
+    });
+
+    if (!url) {
+      return <RedirectPageComponent />;
+    }
+
+    // Increment click count
+    await prisma.url.update({
+      where: { shortCode },
+      data: { clicks: { increment: 1 } },
+    });
+
+    // console.log(url.longUrl);
+  } catch (err) {
+    console.error("Database error:", err);
+    return <RedirectPageComponent />;
+  }
+
+  // Redirect outside of try-catch
+  if (url && url.longUrl) {
+    redirect(url.longUrl);
+  }
+
+  // This should not be reached, but just in case
+  return <RedirectPageComponent />;
+};
+
+const RedirectPageComponent = () => {
   return (
     <div className="relative flex flex-col w-full justify-center min-h-svh bg-background p-6 md:p-10">
       <div className="relative max-w-5xl mx-auto w-full">
@@ -27,10 +69,9 @@ const page = () => {
           <h1 className="text-3xl md:text-5xl lg:6xl font-bold text-foreground mb-4 md:mb-6 select-none">
             Whoops! URL missing!
           </h1>
-        
+
           <p className="text-lg md:text-xl text-muted-foreground mb-8 md:mb-12 opacity-50 font-dm-sans select-none">
-            This short link doesn&apos;t exist or
-            has been removed.
+            This short link doesn&apos;t exist or has been removed.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row sm:items-center sm:justify-center gap-y-3 gap-x-6">
@@ -44,4 +85,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default RedirectPage;

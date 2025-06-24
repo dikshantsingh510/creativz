@@ -1,23 +1,22 @@
 import { ChartAreaInteractive } from "@/components/dashboard/analytics/chart-area-interactive";
 import { SectionCards } from "@/components/dashboard/analytics/section-cards";
-import linksdata from "../linksdata.json";
+
 import { Metadata } from "next";
+import { use } from "react";
+import { linksAction } from "@/actions/links.action";
 
 export const metadata: Metadata = {
   title: "Crativez | Dashboard Analytics",
   description: "Analytics about our URL shortener service",
 };
 
-// interface Url {
-//   id: number;
-//   longUrl: string;
-//   shortCode: string;
-//   createdAt: string;
-//   clicks: number;
-// }
-const userUrls = linksdata;
+// Force dynamic rendering
+export const dynamic = "force-dynamic";
 
 const StatsPage = () => {
+  const { linksData } = use(linksAction());
+  const userUrls = linksData || []; // Provide fallback for undefined
+
   //? calculate total clicks
   const totalClicks = userUrls.reduce((sum, url) => sum + url.clicks, 0);
 
@@ -43,10 +42,13 @@ const StatsPage = () => {
             totalUrls={totalUrls}
           />
           <div className="px-4 lg:px-6">
-            <ChartAreaInteractive
-              avgClicks={avgClicks}
-              totalClicks={totalClicks}
-            />
+            {linksData && linksData.length > 0 && (
+              <ChartAreaInteractive
+                avgClicks={avgClicks}
+                totalClicks={totalClicks}
+                data={linksData}
+              />
+            )}
           </div>
         </div>
       </div>
