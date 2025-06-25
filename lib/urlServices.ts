@@ -2,8 +2,8 @@ export function getBaseUrl(){
     if(typeof window === undefined){
         return window.location.origin
     }
-    // return "https://creativz.com/r"; 
-    return process.env.NEXT_PUBLIC_BASE_URL; 
+    return "https://www.crativez.com"; 
+    // return process.env.NEXT_PUBLIC_BASE_URL; 
 }
 
 // Validates if a string is a valid URL with http:// or https://
